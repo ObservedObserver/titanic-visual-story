@@ -27,10 +27,10 @@ function CategorySlide (props) {
     });
 
     const color = d3.scaleOrdinal(d3.schemeTableau10);
-    const update = d3.select('svg').select('g').selectAll('rect')
+    const update = d3.select('#pin1-canvas').select('g').selectAll('rect')
       .data(sortedData);
     update.transition()
-    .duration(2000)
+    .duration(1000)
     .attr('y', row => {
       return Math.floor(row.newIndex * (BLOCK.width + BLOCK.margin) / CANVAS.width) * (BLOCK.height + BLOCK.margin)
     })
@@ -38,7 +38,7 @@ function CategorySlide (props) {
       return row.newIndex * (BLOCK.width + BLOCK.margin) % CANVAS.width;
     })
     .transition()
-    .duration(500)
+    .duration(400)
     .attr('fill', row => {
       return color(row[category])
     });
